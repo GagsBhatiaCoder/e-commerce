@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
-import ProductContext from '../context/ProductContext'
+import React from 'react'
 import FormatPrice from '../Components/FormatPrice'
 import { Link} from 'react-router-dom';
+import { useFilterContext } from '../context/FilterContext';
 
 export default function ListView() {
-    const { products } = useContext(ProductContext);
+    const { filter_products } = useFilterContext();
     return (
         <div className='container'>          
-             {products.map((product) => (
+             {filter_products.map((product) => (
             <div className="card mb-3 p-md-2"  key={product.id} style={{maxWidth: "540px"}}>
                 <div className="row g-0">
                     <div className="col-md-4 d-flex justify-content-center align-items-center">

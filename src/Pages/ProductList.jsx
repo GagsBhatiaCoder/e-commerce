@@ -4,8 +4,7 @@ import GridView from '../Components/GridView';
 import ListView from '../Components/ListView';
 
 export default function ProductList() {
-    const {filter_products, grid_view} = useFilterContext()
-
+    const {filter_products, grid_view} = useFilterContext();
     if( grid_view === true ){
         return <GridView products={filter_products} />;
     }

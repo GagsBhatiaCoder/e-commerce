@@ -2,7 +2,12 @@ import React from 'react'
 import { useFilterContext } from '../context/FilterContext'
 
 export default function Sort() {
-  const {filter_products, grid_view, setGridView, setListView} = useFilterContext()
+  const {filter_products, grid_view, setGridView, setListView, sorting} = useFilterContext();
+  const handleSortChange = (e) => {
+  const selectedValue = e.target.value;
+    sorting(selectedValue);
+  };
+
   return (
         <div className='container d-flex flex-column flex-md-row justify-content-between p-3 mb-3'>
             <div>
@@ -11,12 +16,15 @@ export default function Sort() {
             </div>
             <p>{`${filter_products.length} Available Products`}</p>
             <div className='col-md-2'>
-            <select className="form-select" aria-label="Default select example">
-              <option >Price a-z</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <form >
+            <select className="form-select" aria-label="Default select example" id='sort' name='sort' 
+            onClick={handleSortChange}>
+              <option value="lowest">Price (low to high)</option>
+              <option value="highest">Price (high to low)</option>
+              <option value="a-z">Price (a-z)</option>
+              <option value="z-a">Price(z-a)</option>
             </select>
+            </form>
             </div>
           </div>
   )

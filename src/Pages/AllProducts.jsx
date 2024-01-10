@@ -4,6 +4,7 @@ import Footer from '../Components/Footer'
 import './Style.css'
 import ProductList from './ProductList'
 import Sort from '../Components/Sort'
+import FilterSection from '../Components/FilterSection'
 
 export default function AllProducts() {
   return (
@@ -13,7 +14,7 @@ export default function AllProducts() {
       <div className=' row justify-content-md-center p-2 p-md-4 m-0'>
         <div className='col-md-2 '>
           <div className="mb-3 col-6">
-            <input type="text" className="form-control" placeholder="Search" />
+           <FilterSection />
           </div>
           <p><b>All Categories</b></p>
           <p>Mobile phone</p>
