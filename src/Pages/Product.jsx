@@ -44,7 +44,7 @@ export default function Product() {
           <figure><img style={{ width: "300px" }} src={mainImage} alt={product.name} /></figure>
         </div>
         </div>
-        <div className='p-2'>
+        <div className='p-2 product-details'>
           <h4> {product.name}</h4>
           <Star star={product.star} reviews={product.reviews} />
           <p>MRP: <del>{<FormatPrice price={product.price + (product.price * .50)} />}</del></p>
@@ -67,7 +67,7 @@ export default function Product() {
           <hr className='mt-0' />
           <p>Available: <span className={`fw-bold ${product.stock > 0 ? "text-success" : "text-danger"}`} > {product.stock > 0 ? "In Stock" : "Not Available"}</span></p>
           <p>ID: {product.id}</p>
-          <p>Brand: {product.brand}</p>
+          <p>Brand: {product.company}</p>
           <hr />
           {product.stock > 0 && <AddToCart product={product} />}
         </div>

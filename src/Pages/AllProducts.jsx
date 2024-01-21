@@ -12,16 +12,10 @@ export default function AllProducts() {
       <Navbar />
       <h4 className='text-center p-5'>All Products</h4>
       <div className=' row justify-content-md-center p-2 p-md-4 m-0'>
-        <div className='col-md-2 '>
-          <div className="mb-3 col-6">
+        <div className='col-md-2 p-3'>
+          <div className="mb-3 col-md-8">
            <FilterSection />
           </div>
-          <p><b>All Categories</b></p>
-          <p>Mobile phone</p>
-          <p>Laptops</p>
-          <p>Shoes</p>
-          <p>Accesories</p>
-          <p>Clothes</p>
         </div>
 
         <div className='col-md-8'>

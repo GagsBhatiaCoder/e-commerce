@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './Style.css'
 import CartToggleAmount from './CartToggleAmount';
+import { useCartContext } from '../context/CartContext';
 
 export default function AddToCart({product}) {
-    const {colors, stock} = product ;
+  const {addToCart} = useCartContext()
+  // this product represents a value for singleProduct
+    const {id, colors, stock, size} = product ;
+    const [selectedSize , setSelectedSize] = useState(size && size.length > 0 ? size[0] : null)
     const [color, setColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
 
@@ -26,9 +30,19 @@ export default function AddToCart({product}) {
             </button>
         ))}
       </p>
-
+      {size && size.length > 0 && (
+        <p>Size:
+      {size.map((currEle, index) => (
+        <button className={` ${selectedSize === currEle ? "btn-style bg-light active" : "btn-style bg-light p-2"}`}
+        key={index} 
+        onClick={() => (setSelectedSize(currEle))}>{currEle}</button>
+      ))}
+     </p>
+      )}
+     
     <CartToggleAmount amount={amount} setDecrease={setDecrease} setIncrease={setIncrease} />
-    <Link to="/cart" className="btn btn-success">Add to cart</Link>
+    <Link to="/cart"
+    onClick={() => addToCart(id, color, amount, selectedSize, product)} className="btn btn-success">Add to cart</Link>
     </div>
   )
 }

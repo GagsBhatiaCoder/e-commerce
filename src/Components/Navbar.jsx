@@ -1,8 +1,10 @@
 import React from 'react';
 import Logo from '../Assets/logo.png';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../context/CartContext';
 
 export default function Navbar() {
+  const {total_item} = useCartContext()
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -31,10 +33,10 @@ export default function Navbar() {
               </li>
             </ul>
             <div className="d-flex ">
-            <Link className="nav-link position-relative me-3 fs-5">
+            <Link to='/cart' className="nav-link position-relative me-3 fs-5">
              <i className="bi bi-cart4"></i>
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark">
-                0
+                {total_item}
               </span>
             </Link>
             <button className='btn btn-success'>Login</button>

@@ -9,8 +9,14 @@ const initialState = {
   all_products: [],
   grid_view: true,
   sorting_value: "lowest",
-  filters:{
-    text:"",
+  filters: {
+    text: "",
+    category: "all",
+    company: "all",
+    colors: "all",
+    maxPrice: 0,
+    price: 0,
+    minPrice: 0,
   },
 };
 
@@ -39,12 +45,12 @@ const FilterContextProvider = ({ children }) => {
       case 'highest':
         sortedProducts.sort((a, b) => b.price - a.price);
         break;
-        case 'a-z':
-          sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-          break;
-          case 'z-a':
-            sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
-            break;
+      case 'a-z':
+        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'z-a':
+        sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+        break;
       default:
 
         break;
@@ -58,21 +64,25 @@ const FilterContextProvider = ({ children }) => {
     let name = event.target.name;
     let value = event.target.value
 
-    return dispatch({type:"UPDATE_FILTERS_VALUE", payload: {name, value}})
+    return dispatch({ type: "UPDATE_FILTERS_VALUE", payload: { name, value } })
 
   }
-  
+  // to Clear the filters in filterSection
+  const clearFilters = () => {
+    return dispatch({ type: "CLEAR_FILTERS" })
+  }
   useEffect(() => {
-dispatch({type:"FILTER_PRODUCTS"})
-// dispatch({type:"GET_SORT_VALUE"})
-  },[products, state.filters])
+    dispatch({ type: "FILTER_PRODUCTS" })
+    // dispatch({type:"GET_SORT_VALUE"})
+  }, [products, state.filters])
 
   useEffect(() => {
     dispatch({ type: "Load_Filter_products", payload: products });
   }, [products]);
 
   return (
-    <FilterContext.Provider value={{ ...state, setGridView, setListView, sorting, updateFilterValue}}>
+    <FilterContext.Provider
+      value={{ ...state, setGridView, setListView, sorting, updateFilterValue, clearFilters}}>
       {children}
     </FilterContext.Provider>
   );

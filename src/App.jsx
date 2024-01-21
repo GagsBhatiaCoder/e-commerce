@@ -9,6 +9,7 @@ import AllProducts from './Pages/AllProducts';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import FilterContextProvider from './context/FilterContext'
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
@@ -16,17 +17,19 @@ function App() {
     <>
       <ProductState>
         <FilterContextProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/products" element={<AllProducts />} />
-            <Route path="/products/:productId" element={<Product />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </Router>
+          <CartProvider>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/products" element={<AllProducts />} />
+                <Route path="/products/:productId" element={<Product />} />
+                <Route path="*" element={<Error />} />
+              </Routes>
+            </Router>
+          </CartProvider>
         </FilterContextProvider>
       </ProductState>
     </>
