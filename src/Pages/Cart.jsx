@@ -4,14 +4,18 @@ import Footer from '../Components/Footer'
 import { useCartContext } from '../context/CartContext'
 import CartItem from '../Components/CartItem'
 import { Link } from 'react-router-dom'
+import FormatPrice from '../Components/FormatPrice';
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 export default function Cart() {
-  const { cart, clearCart } = useCartContext();
+  const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+   const { isAuthenticated, user} = useAuth0();
 
   if (cart.length === 0) {
     return <div>
-      <Navbar /> 
-      <div className='d-flex flex-column justify-content-center align-items-center' style={{height:"80dvh"}}>
+      <Navbar />
+      <div className='d-flex flex-column justify-content-center align-items-center' style={{ height: "80vh" }}>
         <h3 className='text-center p-3 mb-3'>No Items in your Cart</h3>
         <Link className="btn btn-success" to='/products'> Add Items </Link>
       </div>
@@ -21,14 +25,23 @@ export default function Cart() {
   return (
     <div>
       <Navbar />
-      <div className="container p-sm-5">
-        <div className='row text-center justify-content-sm-center px-sm-4'>
-          <p className='col-2'>Item</p>
-          <p className='col-2'>Price</p>
-          <p className='col-2 d-none d-sm-block'>Quantity</p>
-          <p className='col-2 d-none d-sm-block'>Subtotal</p>
-          <p className='col-2'>Delete</p>
+      {isAuthenticated && (
+        <div className='d-flex justify-content-center align-items-center m-2'>
+          <figure>
+            <img className='me-2' src={user.picture} alt="user_image"  style={{width: "50px"}}/>
+          </figure>
+          <p>Welcome, <span>{user.name}</span></p>
         </div>
+      )}
+      <div className="container p-sm-5">
+        <div className='d-flex justify-content-around px-sm-4'>
+          <p className=''>Item</p>
+          <p className=''>Price</p>
+          <p className=' d-none d-sm-block'>Quantity</p>
+          <p className=' d-none d-sm-block'>Subtotal</p>
+          <p className=''>Delete</p>
+        </div>
+        {/* <h3 className='text-center'>Items</h3> */}
         <hr className='mt-0' />
         <div>
           {cart.map((currEle) => {
@@ -36,11 +49,29 @@ export default function Cart() {
           })}
         </div>
         <hr className='mt-0' />
-        <div className='d-sm-flex justify-content-between'>
-          <Link to='/products' className='btn btn-success '>Continue Shopping</Link>
-          <button className='btn btn-danger' onClick={clearCart}>Clear Cart</button>
+        <div className='d-sm-flex flex-column flex-sm-row justify-content-between'>
+          <Link to='/products' className='btn btn-success mb-2'>Continue Shopping</Link>
+          <button className='btn btn-danger mb-2' onClick={clearCart}>Clear Cart</button>
+        </div>
+        <div className='d-flex justify-content-end'>
+          <div className='d-flex flex-column border rounded border-success-subtle p-3 mt-3' style={{ maxWidth: "300px" }}>
+            <div className="d-flex">
+              <p className='me-3'>SubTotal:</p>
+              <p className='fw-bold'><FormatPrice price={total_price} /></p>
+            </div>
+            <div className="d-flex">
+              <p className='me-3'>Shipping Fee</p>
+              <p className='fw-bold'><FormatPrice price={shipping_fee} /></p>
+            </div>
+            <hr />
+            <div className="d-flex">
+              <p className='me-3'>Order Total:</p>
+              <p className='fw-bold'><FormatPrice price={shipping_fee + total_price} /></p>
+            </div>
+          </div>
         </div>
       </div>
+
       <Footer />
     </div>
   )

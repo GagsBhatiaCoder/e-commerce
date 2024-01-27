@@ -61,12 +61,12 @@ const CartReducer = (state, action) => {
       cart: [],
     }
   }
-  
+
   if (action.type === "SET_DECREASE") {
     let updatedProduct = state.cart.map((currEle) => {
       if (currEle.id === action.payload) {
         let decAmount = currEle.amount - 1;
-        if(decAmount <= 1){
+        if (decAmount <= 1) {
           decAmount = 1;
         }
 
@@ -88,7 +88,7 @@ const CartReducer = (state, action) => {
     let updatedProduct = state.cart.map((currEle) => {
       if (currEle.id === action.payload) {
         let incAmount = currEle.amount + 1;
-        if(incAmount >= currEle.max){
+        if (incAmount >= currEle.max) {
           incAmount = currEle.max;
         }
 
@@ -106,17 +106,46 @@ const CartReducer = (state, action) => {
     }
   }
 
-if(action.type === "CART_TOTAL_ITEMS"){
-  let updatedCartItems = state.cart.reduce((initialVal, currEle) => {
-    let {amount} = currEle;
-    initialVal = initialVal + amount
-    return initialVal;
-  }, 0)
-  return{
-    ...state,
-    total_item: updatedCartItems,
+  // if (action.type === "CART_TOTAL_ITEMS") {
+  //   let updatedCartItems = state.cart.reduce((initialVal, currEle) => {
+  //     let { amount } = currEle;
+  //     initialVal = initialVal + amount
+  //     return initialVal;
+  //   }, 0)
+  //   return {
+  //     ...state,
+  //     total_item: updatedCartItems,
+  //   }
+  // }
+  // if (action.type === "CART_TOTAL_PRICE") {
+  //   let total_price = state.cart.reduce((initialVal, currEle) => {
+  //     let { price, amount } = currEle
+  //     initialVal = initialVal + (price * amount);
+  //     return initialVal;
+  //   }, 0);
+  //   return {
+  //     ...state,
+  //     total_price,
+  //   }
+  // }
+  if (action.type === "CART_ITEM_PRICE_TOTAL") {
+    let { total_item, total_price } = state.cart.reduce((accum, currEle) => {
+      let { price, amount } = currEle;
+
+      accum.total_item += amount
+      accum.total_price += price * amount;
+
+      return accum;
+
+    }, { total_item: 0, total_price: 0 });
+
+    return{
+      ...state,
+      total_item,
+      total_price
+    }
+   
   }
-}
 
   return state;
 

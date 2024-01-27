@@ -2,9 +2,13 @@ import React from 'react';
 import Logo from '../Assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../context/CartContext';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
-  const {total_item} = useCartContext()
+  const { total_item } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated, user} = useAuth0();
+
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,13 +37,20 @@ export default function Navbar() {
               </li>
             </ul>
             <div className="d-flex ">
-            <Link to='/cart' className="nav-link position-relative me-3 fs-5">
-             <i className="bi bi-cart4"></i>
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark">
-                {total_item}
-              </span>
-            </Link>
-            <button className='btn btn-success'>Login</button>
+            {
+                isAuthenticated ?  <img className=' rounded-circle ms-2' src={user.picture} alt={user.name} style={{width:"40px"}}/>: ""
+              }
+              <Link to='/cart' className="nav-link position-relative me-3 fs-5">
+                <i className="bi bi-cart4"></i>
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark">
+                  {total_item}
+                </span>
+              </Link>
+              {isAuthenticated ?   <button className='btn btn-success' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                Log Out
+              </button> : <button className='btn btn-success' onClick={() => loginWithRedirect()}>Log In</button>}
+              
+            
             </div>
           </div>
         </div>

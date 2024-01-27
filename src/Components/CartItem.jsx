@@ -7,8 +7,8 @@ export default function CartItem({ id, name, image, amount, price, color, select
     const {removeItem, setDecrease, setIncrease} = useCartContext();
 
     return (
-        <div className='row text-center justify-content-md-center my-sm-3'>
-            <div className='col-2 d-flex '>
+        <div className='d-flex flex-wrap text-center justify-content-around align-items-center my-sm-3 p-2 border'>
+            <div className=' d-sm-flex'>
                 <figure className='d-flex justify-content-center align-items-center'>
                     <img src={image} alt={name} style={{ width: "40px" }} />
                 </figure>
@@ -18,16 +18,18 @@ export default function CartItem({ id, name, image, amount, price, color, select
                    {selectedSize && <p className='m-0'> Size: {selectedSize}</p>}
                 </div>
             </div>
-            <div className='col-2'>
+            <div className=''>
+                {/* <p>Price</p> */}
                 <FormatPrice price={price}/>
             </div>
-            <div className="col-2 d-none d-sm-block">
+            <div className=" d-none d-sm-block">
             <CartToggleAmount amount={amount} setDecrease={() => setDecrease(id)} setIncrease={() => setIncrease(id)} />
             </div>
-            <div className="col-2 d-none d-sm-block">
+            <div className=" d-none d-sm-block">
+                {/* <p>SubTotal</p> */}
                <FormatPrice  price={price*amount} />
             </div>
-            <div className="col-2 ">
+            <div className=" ">
             <i className="bi bi-trash-fill text-danger" style={{cursor:"pointer"}}  onClick={() => removeItem(id)}></i>
             </div>
 

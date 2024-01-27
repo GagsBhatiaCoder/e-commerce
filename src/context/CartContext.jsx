@@ -44,7 +44,9 @@ dispatch({type:"CLEAR_CART", payload: id})
 
     //  add localStorage to cart data
     useEffect(() => {
-        dispatch({type:"CART_TOTAL_ITEMS"})
+        // dispatch({type:"CART_TOTAL_ITEMS"})
+        // dispatch({type:"CART_TOTAL_PRICE"})
+        dispatch({type:"CART_ITEM_PRICE_TOTAL"})
         localStorage.setItem("yashCart", JSON.stringify(state.cart))
     }, [state.cart])
 
