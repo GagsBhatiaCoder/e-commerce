@@ -5,6 +5,7 @@ import FormatPrice from './FormatPrice';
 import '../Pages/Style.css'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from 'react-router-dom';
 
 const responsive = {
     superLargeDesktop: {
@@ -53,6 +54,10 @@ export default function FeatureServices() {
 
                 </Carousel>
             </div>
+            <div className="d-flex justify-content-center">
+            <Link to='./products' className='btn btn-success' >All Products</Link>
+            </div>
+            
         </div>
     )
 }

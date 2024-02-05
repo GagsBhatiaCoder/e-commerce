@@ -8,6 +8,12 @@ import Pullover from '../Assets/Images/pullover.jpg';
 import Reebok from '../Assets/Images/reebok.jpg';
 import Vans from '../Assets/Images/vans.jpg';
 import Samsung from '../Assets/Images/samsung.jpg';
+import Air1 from '../Assets/Images/airmax1.png';
+import Air2 from '../Assets/Images/airmax2.jpg';
+import Air3 from '../Assets/Images/airmax-3.png';
+import Air4 from '../Assets/Images/airmax4.png';
+
+
 const productData = [
   {
     id: 1,
@@ -56,14 +62,14 @@ const productData = [
   },
   {
     id: 4,
-    name: "Nike ZoomX",
+    name: "Nike Air Max 97 SE",
     star: 4.2,
     reviews: "23 ",
-    price: 20000,
+    price: 16995,
     colors: ["#f9393a", "#000", "#fff800 "],
-    img: [Zoom, Zoom2, Zoom3, Zoom4],
+    img: [Air1, Air2, Air3, Air4],
     discription: "This is a sports shoes which is best for running",
-    category: "Clothes",
+    category: "Shoes",
     featured: false,
     stock: 10,
     size: [7, 8, 9, 10],
