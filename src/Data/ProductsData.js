@@ -71,8 +71,7 @@ const productData = [
     discription: "This is a sports shoes which is best for running",
     category: "Shoes",
     featured: false,
-    stock: 10,
-    size: [7, 8, 9, 10],
+    stock: 10,    size: [7, 8, 9, 10],
     company: "Nike",
   },
   {
