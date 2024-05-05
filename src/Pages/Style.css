@@ -9,3 +9,9 @@
         max-width: max-content;
     }
 }
+
+@media(max-width: 360px){
+    .font-sm{
+        font-size: 10px;
+    }
+}

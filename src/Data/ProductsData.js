@@ -4,7 +4,6 @@ import Zoom3 from "../Assets/Images/img2.jpg";
 import Zoom4 from "../Assets/Images/img3.jpg";
 import Watch from "../Assets/Images/watch.jpg";
 import Iphone from '../Assets/Images/iphone.jpg';
-import Pullover from '../Assets/Images/pullover.jpg';
 import Reebok from '../Assets/Images/reebok.jpg';
 import Vans from '../Assets/Images/vans.jpg';
 import Samsung from '../Assets/Images/samsung.jpg';
@@ -12,6 +11,10 @@ import Air1 from '../Assets/Images/airmax1.png';
 import Air2 from '../Assets/Images/airmax2.jpg';
 import Air3 from '../Assets/Images/airmax-3.png';
 import Air4 from '../Assets/Images/airmax4.png';
+import Kakashi from '../Assets/Images/kakashi-2.jpg'
+import Kakashi2 from '../Assets/Images/kakashi-1.jpg'
+import Kakashi3 from '../Assets/Images/kakashi-3.jpg'
+import Kakashi4 from '../Assets/Images/kakashi-4.jpg'
 
 
 const productData = [
@@ -120,12 +123,12 @@ const productData = [
   },
   {
     id: 8,
-    name: "Pullover",
-    star: 3.5,
-    reviews: "23 ",
-    price: 2500,
-    colors: ["#525ceb", "#000", "#fff800 "],
-    img: [Pullover, Zoom2, Zoom3, Zoom4],
+    name: "Kakashi T-shirt",
+    star: 4.5,
+    reviews: "45",
+    price: 999,
+    colors: [ "#000", "#1E0342"],
+    img: [Kakashi, Kakashi2, Kakashi3, Kakashi4],
     discription:
       "This is a sports shoes which is best for running these are few more words to check the slice method",
     category: "Clothes",

@@ -35,7 +35,7 @@ export default function FilterSection() {
         <h5 className='m-2'>Category</h5>
         <div>
           {categoryData.map((currEle, index) => {
-            
+        //  const isActive = filters.category.toLowerCase() === currEle.toLowerCase();       
             return <button type='button' className="btn d-block" name='category' key={index} 
             value={currEle.toLowerCase()} onClick={updateFilterValue}>
               {currEle}
@@ -90,7 +90,7 @@ export default function FilterSection() {
         <input type="range" min={minPrice} max={maxPrice} value={price} name='price' onChange={updateFilterValue}/>
       </div>
       <div>
-        <button className='btn btn-outline-danger' onClick={clearFilters}> Clear Filters</button>
+        <button className='btn btn-outline-danger p-1' onClick={clearFilters}> Clear Filters</button>
       </div>
     </>
   )
