@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
-import './Style.css'
+import './pages.css'
 import ProductList from './ProductList'
 import Sort from '../Components/Sort'
 import FilterSection from '../Components/FilterSection'

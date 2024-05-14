@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import ProductContext from '../context/ProductContext'
 import { useNavigate } from 'react-router-dom';
 import FormatPrice from './FormatPrice';
-import '../Pages/Style.css'
+import '../Pages/pages.css'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from 'react-router-dom';

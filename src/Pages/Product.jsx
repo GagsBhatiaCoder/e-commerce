@@ -6,6 +6,9 @@ import Footer from '../Components/Footer';
 import FormatPrice from '../Components/FormatPrice';
 import Star from './Star';
 import AddToCart from '../Components/AddToCart';
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
 
 export default function Product() {
   const { products } = useContext(ProductContext);
@@ -31,7 +34,7 @@ export default function Product() {
       <h3 className='text-center p-4'>Products Details</h3>
       <div className='container d-flex flex-column flex-sm-row justify-content-center align-items-center'>
         <div className='d-flex flex-wrap-reverse jutify-content-center align-items-center'>
-        <div className='me-2 d-flex flex-sm-column flex-wrap p-2'>
+          <div className='me-2 d-flex flex-sm-column flex-wrap p-2'>
             {product.img.map((currEle, index) => (
               <figure key={index}>
                 <img className='m-1' style={{ width: "100px" }}
@@ -39,9 +42,11 @@ export default function Product() {
                   onClick={() => (setMainImage(currEle))} />
               </figure>
             ))}
-        </div>
-        <div className='me-sm-4'>
-          <figure><img style={{ width: "300px" }} src={mainImage} alt={product.name} /></figure>
+          </div>
+          <div className='me-sm-4'>
+            <Zoom>
+            <img className='main-image' style={{ width: "300px" }} src={mainImage} alt={product.name} />
+            </Zoom>
         </div>
         </div>
         <div className='p-2 product-details'>

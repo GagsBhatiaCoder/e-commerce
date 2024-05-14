@@ -1,0 +1,21 @@
+.card-hover:hover{
+    box-shadow: -5px 13px 50px 0px rgba(0,0,0,0.1);
+}
+.product-details{
+    max-width: 50%;
+}
+
+/* css for product Image */
+
+
+@media(max-width: 556px){
+    .product-details{
+        max-width: max-content;
+    }
+}
+
+@media(max-width: 360px){
+    .font-sm{
+        font-size: 10px;
+    }
+}
